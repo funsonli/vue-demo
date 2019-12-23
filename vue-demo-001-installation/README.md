@@ -1,3 +1,6 @@
+# vue-demo-001-installation vue安装
+
+> 本demo描述安装和使用vue-cli生成一个helloworld项目
 
 ## 安装NPM
 安装npm和cpm
@@ -142,5 +145,7 @@ npm run dev
 
 ## 参考
 - https://www.runoob.com/vue2/vue-install.html
-- 
 
+
+### 附
+如果您喜欢本Vue Demo样例和样例代码，请[点赞Star](https://github.com/funsonli/vue-demo)
