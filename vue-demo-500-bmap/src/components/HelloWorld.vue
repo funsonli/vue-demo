@@ -1,113 +1,47 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+  <baidu-map
+    :center="center"
+    :zoom="zoom"
+    @ready="handler"
+    class="bm-view"
+    mapType="BMAP_SATELLITE_MAP"
+  >
+    <bm-polygon
+      :path="polygonPath"
+      stroke-color="blue"
+      :stroke-opacity="0.5"
+      :stroke-weight="2"
+      :editing="true"
+      @lineupdate="updatePolygonPath"
+    />
+  </baidu-map>
 </template>
-
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      center: { lng: 117.09433584668948, lat: 31.960592699589098 },
+      zoom: 15,
+      polygonPath: [
+        { lng: 117.09413584668948, lat: 31.959572699589098 },
+        { lng: 117.09494584668948, lat: 31.959592699589098 },
+        { lng: 117.09483584668948, lat: 31.961592699589098 },
+        { lng: 117.09383584668948, lat: 31.961592699589098 },
+      ]
+    };
+  },
+  methods: {
+    handler({ BMap, map }) {
+      this.zoom = 17;
+      map.enableScrollWheelZoom(true);
     }
   }
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style>
+.bm-view {
+  width: 100%;
+  height: 300px;
 }
 </style>
