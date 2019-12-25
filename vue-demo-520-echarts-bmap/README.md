@@ -28,3 +28,11 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+npm i echarts -S
+npm i element-ui -S
+npm i vue-baidu-map -S
+
+- https://github.com/necolas/normalize.css/
+- https://segmentfault.com/a/1190000018993981
+- https://dafrok.github.io/vue-baidu-map/#/zh/index
